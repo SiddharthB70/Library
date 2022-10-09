@@ -89,12 +89,38 @@ body{
     padding: 50px 20px;
     box-sizing: border-box;
     font-family: "norse",serif;
+    position: relative
 }
 
 .form-container>h1{
     text-align: center;
     margin-bottom: 20px;
     font-size: 50px;
+    
+}
+
+.form-container>#close-button{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    appearance: none;
+    border-style: none;
+    background-color: inherit;
+    
+}
+
+.form-container>#close-button>svg{
+    transition: all 0.1s;
+}
+
+.form-container>#close-button:hover>svg{
+    transform: scale(1.2);
+}
+
+.form-container>#close-button:hover>svg>path:first-child{
+    fill: crimson;
 }
 
 .form-container>form label{

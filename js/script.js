@@ -3,11 +3,16 @@ const submitButton = document.getElementById("form-submit");
 const formLayer = document.querySelector(".book-form");
 const mainContainer = document.querySelector(".main-container");
 const form = document.querySelector("form");
+const formCloseButton = document.getElementById("close-button")
 let myLibrary = [];
 
 
 addButton.addEventListener("click",()=>buttonFunction(addButton));
 submitButton.addEventListener("click",setSubmitButton);
+formCloseButton.addEventListener("click",()=>{
+    buttonFunction(formCloseButton);
+    setTimeout(clearInput,600);
+})
 
 function setSubmitButton(){
     const textInputs = document.querySelectorAll(`input[type="text"]`);
@@ -37,7 +42,7 @@ function displayFormLayer(button){
             formLayer.style = "opacity: 1"
         },1)    
     }
-    if(button.id == "form-submit"){
+    if(button.id == "form-submit" || button.id == "close-button"){
         formLayer.style = "opacity: 0";
         setTimeout(()=>{
             formLayer.style = "";
