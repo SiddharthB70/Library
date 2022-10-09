@@ -9,6 +9,7 @@
 *{
     margin: 0;
     padding: 0;
+    
 }
 
 body{
@@ -17,6 +18,7 @@ body{
     position: relative;
     display: grid;
     grid-template: "header" 150px "main" 1fr;
+    font-family: "norse",serif;
 }
 
 .header{
@@ -46,7 +48,6 @@ body{
 }
 
 .button{
-    /* justify-self: end; */
     appearance: none;
     width: 150px;
     height: 50px;
@@ -66,14 +67,18 @@ body{
 
 .book-form{
     position: absolute;
-    height: 0px;
+    height: 100vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.5s;
+}
+
+.visible{
+    display: flex;
 }
 
 .form-container{
@@ -174,7 +179,7 @@ body{
     padding: 50px;
     grid-template: repeat(auto-fit,400px)/repeat(auto-fit,300px);
     gap: 30px;
-    background-color: rgba(0, 0, 0, 0.641);
+    background-color: rgba(33, 33, 33, 0.641);
 }
 
 .book-card{
@@ -182,8 +187,28 @@ body{
     width: auto;
     border-radius: 10px;
     background-color: white;
+    padding: 30px;
 }
 
+.card-layout{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-layout>dt{
+    font-size: 25px;
+    background-color: #e2b266;
+    width: max-content;
+    padding: 5px;
+    border-radius: 20%;
+}
+
+.card-layout>dd{
+    font-size: 30px;
+    letter-spacing: 3px;
+    padding-bottom: 10px;
+}
 
 
 
