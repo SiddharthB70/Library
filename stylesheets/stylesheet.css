@@ -168,8 +168,20 @@ body{
 }
 
 .main-container{
+    box-sizing: border-box;
+    height: 100%;
     display: grid;
+    padding: 50px;
+    grid-template: repeat(auto-fit,400px)/repeat(auto-fit,300px);
+    gap: 30px;
+    background-color: rgba(0, 0, 0, 0.641);
+}
 
+.book-card{
+    height: 400px;
+    width: auto;
+    border-radius: 10px;
+    background-color: white;
 }
 
 
