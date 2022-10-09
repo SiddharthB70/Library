@@ -41,8 +41,12 @@ body{
     font-size: 50px;
 }
 
-.add-book{
+#add-book{
     justify-self: end;
+}
+
+.button{
+    /* justify-self: end; */
     appearance: none;
     width: 150px;
     height: 50px;
@@ -56,7 +60,7 @@ body{
     border-style: none;
 }
 
-.add-book:hover{
+.button:hover{
     background-color: #bc862f
 }
 
@@ -64,4 +68,100 @@ body{
     position: absolute;
     height: 100vh;
     width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.form-container{
+    height: 600px;
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    font-family: "norse",serif;
+}
+
+.form-container>h1{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 50px;
+}
+
+.form-container>form label{
+    display: block;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.form-container>form>p{
+    position: relative;
+    margin: 20px 10px;
+}
+
+.form-container>form>p>input[type="text"]{
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    border-style: solid;
+}
+
+.form-container>form>p>input[type="checkbox"]{
+    appearance: none;
+    width: 0px;
+}
+
+#status-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+#status-container>label{
+    position: relative;
+    border-style: solid;
+    width: max-content;
+    padding: 5px;
+    background-color: gold;
+    transition: all 0.3s;
+    border-radius: 10px;
+}
+
+#status-container>label::after{
+    content: " ";
+    width: 45px;
+    height: 40px;
+    background-color: grey;
+    position: absolute; 
+    top: 0px;
+    left: 0px;
+    transition: all 0.3s;
+    border-radius: 8px;
+}
+
+
+#status-container>input:checked + label{
+    background-color: lightgreen;
+}
+
+#status-container>input:checked + label::after{
+    left: 75px;
+    width: 105px;
+}
+
+.submit-layer{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#form-submit{
+    border-radius: 10px;
+}
+
+
+
+
+

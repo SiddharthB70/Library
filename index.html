@@ -9,11 +9,36 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <div class="book-form"></div>
+    <div class="book-form">
+        <div class="form-container">
+            <h1>BOOK DETAILS</h1>
+            <form action="#">
+                <p>
+                    <label for="title">TITLE</label>
+                    <input type="text" name="title" id="title" required >
+                </p>
+                <p>
+                    <label for="author">AUTHOR</label>
+                    <input type="text" name="author" id="author" required>
+                </p>
+                <p>
+                    <label for="pages">PAGES</label>
+                    <input type="text" name="pages" id="pages" required>
+                </p>
+                <p id="status-container">
+                    <input type="checkbox" name="status" id="status">
+                    <label for="status">READ &emsp; IN-PROGRESS</label>
+                </p>
+                <div class="submit-layer">
+                    <button type="submit" id="form-submit" class="button">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="header">
         <img src="img/logo.png" alt="logo" id="logo">
         <h1 id="logo-font">ODIN LIBRARY</h1>
-        <button class="add-book">Add Book</button>
+        <button class="button" id="add-book">Add Book</button>
     </div>
 </body>
 </html>
