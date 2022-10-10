@@ -21,6 +21,9 @@ function setSubmitButton(){
             return;
     }
     buttonFunction(submitButton);
+    if(myLibrary.length == 0){
+        setMainContainer();
+    }
     getFormValues();
     setTimeout(clearInput,500);
     addBookCard();
@@ -172,8 +175,23 @@ function removeBook(e){
     let bookIndex = findIndex(bookCard);
     myLibrary.splice(bookIndex,1,);
     mainContainer.removeChild(bookCard);
+    if(myLibrary.length == 0){
+        emptyMainContainer();
+    }
+}
+
+function emptyMainContainer(){
+    mainContainer.classList.add("empty");
+    mainContainer.textContent = "YOUR LIBRARY IS EMPTY!"
+}
+
+function setMainContainer(){
+    mainContainer.classList.remove("empty");
+    mainContainer.textContent = ""
 }
 
 window.onload = ()=>{
     clearInput();
+    emptyMainContainer();
 }
+
