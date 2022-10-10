@@ -69,9 +69,9 @@ function addBookCard(){
     // bookCard.appendChild(cardCloseButton);
 
     const cardInformation = getCardInformation(); 
-    bookCard.appendChild(cardInformation);
-
+    bookCard.appendChild(cardInformation[0]);
     mainContainer.appendChild(bookCard);
+    cardInformation[1].addPresentBookCard(bookCard);
 }
 
 function getFormValues(){
@@ -87,6 +87,10 @@ function Book(title,author,pages,status){
     this.Status = status;
 }
 
+Book.prototype.addPresentBookCard = function (card){
+    this.card = card;
+}
+
 function addBookToLibrary(book){
     myLibrary.push(book);
 }
@@ -99,6 +103,8 @@ function getCardInformation(){
     const list = document.createElement("dl");
     const presentBook = myLibrary.at(-1);
     for(let key in presentBook){
+        if(key == "addPresentBookCard")
+            break;
         const dt = document.createElement("dt");
         dt.textContent = key;
         list.appendChild(dt);
@@ -114,7 +120,7 @@ function getCardInformation(){
         }        
     }
     list.classList.add("card-layout");
-    return list;
+    return [list,presentBook];
 }
 
 
@@ -131,6 +137,7 @@ function createStatusNode(status){
     statusCheck.setAttribute("name",`status${statusNum}`);
     statusCheck.setAttribute("id",`status${statusNum}`);
     statusCheck.checked = status;
+    statusCheck.addEventListener("click",changeBookStatus);
 
     statusLabel.setAttribute("for",`status${statusNum}`);
     statusLabel.textContent = `READ IN-PROGRESS`;
@@ -141,5 +148,14 @@ function createStatusNode(status){
     statusContainer.appendChild(statusLabel);
     cardForm.appendChild(statusContainer);
     return cardForm;
+}
+
+
+function changeBookStatus(event){
+    const bookCard = event.target.closest(".book-card");
+    let bookIndex = myLibrary.findIndex((book)=>{
+        return bookCard.isEqualNode(book.card);
+    });    
+    myLibrary[bookIndex]["Status"] = !myLibrary[bookIndex]["Status"];  
 }
 
