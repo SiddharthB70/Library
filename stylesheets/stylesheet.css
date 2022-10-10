@@ -89,41 +89,44 @@ body{
     padding: 50px 20px;
     box-sizing: border-box;
     font-family: "norse",serif;
-    position: relative
+    position: relative;
+    z-index: 2; 
 }
 
 .form-container>h1{
     text-align: center;
     margin-bottom: 20px;
     font-size: 50px;
-    
 }
 
-.form-container>#close-button{
+
+.close-button{
     width: 24px;
     height: 24px;
     position: absolute;
-    right: 20px;
-    top: 25px;
     appearance: none;
     border-style: none;
     background-color: inherit;
-    
 }
 
-.form-container>#close-button>svg{
+#form-close{
+    right: 20px;
+    top: 25px;
+}
+
+.close-button>svg{
     transition: all 0.1s;
 }
 
-.form-container>#close-button:hover>svg{
+.close-button:hover>svg{
     transform: scale(1.2);
 }
 
-.form-container>#close-button:hover>svg>path:first-child{
+.close-button:hover>svg>path:first-child{
     fill: crimson;
 }
 
-.form-container>form label{
+label{
     display: block;
     font-size: 25px;
     margin-bottom: 5px;
@@ -141,18 +144,18 @@ body{
     border-style: solid;
 }
 
-.form-container>form>p>input[type="checkbox"]{
+input[type="checkbox"]{
     appearance: none;
     width: 0px;
 }
 
-#status-container{
+#form-book-status{
     margin-top: 40px;
     display: flex;
     justify-content: center;
 }
 
-#status-container>label{
+.status-container>label{
     position: relative;
     border-style: solid;
     width: max-content;
@@ -162,7 +165,7 @@ body{
     border-radius: 10px;
 }
 
-#status-container>label::after{
+.status-container>label::after{
     content: " ";
     width: 45px;
     height: 40px;
@@ -175,13 +178,13 @@ body{
 }
 
 
-#status-container>input:checked + label{
+.status-container>input:checked + label{
     background-color: lightgreen;
 }
 
-#status-container>input:checked + label::after{
-    left: 75px;
-    width: 105px;
+.status-container>input:checked + label::after{
+    left: 50px;
+    width: 102px;
 }
 
 .submit-layer{
@@ -202,18 +205,21 @@ body{
     box-sizing: border-box;
     height: 100%;
     display: grid;
-    padding: 50px;
-    grid-template: repeat(auto-fit,400px)/repeat(auto-fit,300px);
-    gap: 30px;
+    padding: 40px;
+    grid-template: max-content/repeat(auto-fit,350px);
+    gap: 25px;
     background-color: rgba(33, 33, 33, 0.641);
 }
 
 .book-card{
-    height: 400px;
+    height: max-content;
     width: auto;
     border-radius: 10px;
     background-color: white;
     padding: 30px;
+    position: relative;
+    box-sizing: border-box;
+   
 }
 
 .card-layout{
@@ -236,5 +242,11 @@ body{
     padding-bottom: 10px;
 }
 
+.card-close{
+    right: 0px;
+    top: 0px;
+}
 
+
+.main-container{}
 

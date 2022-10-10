@@ -3,7 +3,7 @@ const submitButton = document.getElementById("form-submit");
 const formLayer = document.querySelector(".book-form");
 const mainContainer = document.querySelector(".main-container");
 const form = document.querySelector("form");
-const formCloseButton = document.getElementById("close-button")
+const formCloseButton = document.getElementById("form-close")
 let myLibrary = [];
 
 
@@ -40,13 +40,15 @@ function displayFormLayer(button){
         formLayer.classList.add("visible");
         setTimeout(()=>{
             formLayer.style = "opacity: 1"
+            mainContainer.style = "z-index: -1;"
         },1)    
     }
-    if(button.id == "form-submit" || button.id == "close-button"){
+    if(button.id == "form-submit" || button.id == "form-close"){
         formLayer.style = "opacity: 0";
         setTimeout(()=>{
             formLayer.style = "";
             formLayer.classList.remove("visible");
+            mainContainer.style = "";
         },500,formLayer);
     }
 }
@@ -60,14 +62,20 @@ function clickAnimation(button){
 
 function addBookCard(){
     const bookCard = document.createElement("div");
-    const cardInformation = getCardInformation(); 
     bookCard.classList.add("book-card");
+
+    // const cardCloseButton = document.createElement("button");
+    // cardCloseButton.classList.add("close-button","card-close");
+    // bookCard.appendChild(cardCloseButton);
+
+    const cardInformation = getCardInformation(); 
     bookCard.appendChild(cardInformation);
+
     mainContainer.appendChild(bookCard);
 }
 
 function getFormValues(){
-    const inputs = document.querySelectorAll("input");
+    const inputs = document.querySelectorAll(".form-container input");
     let book = new Book(inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].checked)
     addBookToLibrary(book);
 }
@@ -90,25 +98,48 @@ function clearInput(){
 function getCardInformation(){
     const list = document.createElement("dl");
     const presentBook = myLibrary.at(-1);
-    console.log(myLibrary);
-    console.log(presentBook);
     for(let key in presentBook){
-        const dd = document.createElement("dd");
         const dt = document.createElement("dt");
         dt.textContent = key;
-        if(key == "Status"){
-            console.log(presentBook[key])
-            if(presentBook[key])
-                dd.textContent = "Read";
-            else
-                dd.textContent = "In-Progress";
-        }
-        else
-            dd.textContent = presentBook[key];
         list.appendChild(dt);
-        list.appendChild(dd);
+
+        const dd = document.createElement("dd");
+        if(key == "Status"){
+            list.appendChild(createStatusNode(presentBook[key]));
+        }
+        else{
+            
+            dd.textContent = presentBook[key];
+            list.appendChild(dd);
+        }        
     }
     list.classList.add("card-layout");
     return list;
+}
+
+
+function createStatusNode(status){
+    const cardForm = document.createElement("form");
+    const statusContainer = document.createElement("p");
+    const statusCheck = document.createElement("input");
+    const statusLabel = document.createElement("label");
+    let statusNum = myLibrary.length;
+
+    cardForm.setAttribute("action","");
+
+    statusCheck.setAttribute("type","checkbox");
+    statusCheck.setAttribute("name",`status${statusNum}`);
+    statusCheck.setAttribute("id",`status${statusNum}`);
+    statusCheck.checked = status;
+
+    statusLabel.setAttribute("for",`status${statusNum}`);
+    statusLabel.textContent = `READ IN-PROGRESS`;
+
+
+    statusContainer.classList.add("status-container");
+    statusContainer.appendChild(statusCheck);
+    statusContainer.appendChild(statusLabel);
+    cardForm.appendChild(statusContainer);
+    return cardForm;
 }
 
