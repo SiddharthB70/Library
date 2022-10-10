@@ -215,10 +215,11 @@ input[type="checkbox"]{
     height: max-content;
     width: auto;
     border-radius: 10px;
-    background-color: white;
+    background-color: rgba(231, 223, 223, 0.898);
     padding: 30px;
     position: relative;
     box-sizing: border-box;
+    box-shadow: 5px 5px 2px 5px black;
    
 }
 
@@ -242,8 +243,24 @@ input[type="checkbox"]{
     padding-bottom: 10px;
 }
 
-.card-close{
-    right: 0px;
-    top: 0px;
+
+
+.remove-button{
+    appearance: none;
+    font-size: 25px;
+    border-style: solid;
+    background-color: rgb(246, 75, 109);
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+    border-width: 3px;
+    border-color: black;
+    font-family: inherit;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+
+.remove-button:hover{
+    background-color: crimson;
 }
 

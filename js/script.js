@@ -63,13 +63,9 @@ function clickAnimation(button){
 function addBookCard(){
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
-
-    // const cardCloseButton = document.createElement("button");
-    // cardCloseButton.classList.add("close-button","card-close");
-    // bookCard.appendChild(cardCloseButton);
-
     const cardInformation = getCardInformation(); 
     bookCard.appendChild(cardInformation[0]);
+    bookCard.appendChild(createRemoveButton());
     mainContainer.appendChild(bookCard);
     cardInformation[1].addPresentBookCard(bookCard);
 }
@@ -153,9 +149,31 @@ function createStatusNode(status){
 
 function changeBookStatus(event){
     const bookCard = event.target.closest(".book-card");
-    let bookIndex = myLibrary.findIndex((book)=>{
-        return bookCard.isEqualNode(book.card);
-    });    
+    let bookIndex = findIndex(bookCard);   
     myLibrary[bookIndex]["Status"] = !myLibrary[bookIndex]["Status"];  
 }
 
+function findIndex(bookCard){
+    return myLibrary.findIndex((book)=>{
+        return bookCard.isEqualNode(book.card);
+    });
+}
+
+function createRemoveButton(){
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove Book";
+    removeButton.classList.add("remove-button");
+    removeButton.addEventListener("click",removeBook);
+    return removeButton;
+}
+
+function removeBook(e){
+    const bookCard = e.target.closest(".book-card");
+    let bookIndex = findIndex(bookCard);
+    myLibrary.splice(bookIndex,1,);
+    mainContainer.removeChild(bookCard);
+}
+
+window.onload = ()=>{
+    clearInput();
+}
