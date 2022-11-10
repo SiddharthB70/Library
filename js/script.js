@@ -79,16 +79,29 @@ function getFormValues(){
     addBookToLibrary(book);
 }
 
-function Book(title,author,pages,status){
-    this.Title = title;
-    this.Author = author;
-    this.Pages = pages;
-    this.Status = status;
+class Book{
+    constructor(title,author,pages,status){
+        this.Title = title;
+        this.Author = author;
+        this.Pages = pages;
+        this.Status = status;
+    }
+
+    addPresentBookCard(card){
+        this.card = card;
+    }
 }
 
-Book.prototype.addPresentBookCard = function (card){
-    this.card = card;
-}
+// function Book(title,author,pages,status){
+//     this.Title = title;
+//     this.Author = author;
+//     this.Pages = pages;
+//     this.Status = status;
+// }
+
+// Book.prototype.addPresentBookCard = function (card){
+//     this.card = card;
+// }
 
 function addBookToLibrary(book){
     myLibrary.push(book);
